@@ -14,7 +14,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '8.x'   # Using Node.js 8 to match the project setup
+          node-version: '10.X'
 
       - name: Install dependencies
         run: |
