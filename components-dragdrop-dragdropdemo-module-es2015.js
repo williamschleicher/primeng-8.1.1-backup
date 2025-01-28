@@ -1,0 +1,674 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["components-dragdrop-dragdropdemo-module"],{
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/showcase/components/dragdrop/dragdropdemo.html":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/showcase/components/dragdrop/dragdropdemo.html ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"content-section introduction\">\r\n    <div>\r\n        <span class=\"feature-title\">Drag and Drop</span>\r\n        <span>pDraggable and pDroppable directives apply drag-drop behaviors to any element.</span>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"content-section implementation\">\r\n    <h3 class=\"first\">Drag Only</h3>\r\n    <div pDraggable=\"pnl\"  dragHandle=\".ui-panel-titlebar\">\r\n        <p-panel header=\"Drag Header\">\r\n            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.\r\n            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.\r\n            Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,\r\n            kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.\r\n        </p-panel>\r\n    </div>\r\n\r\n    <h3>Drag and Drop to Table</h3>\r\n    <div class=\"ui-g\">\r\n        <div class=\"ui-g-12 ui-md-6 ui-g-nopad drag-column\">\r\n            <ul style=\"margin:0;padding:0\">\r\n                <li *ngFor=\"let car of availableCars\" class=\"ui-helper-clearfix\" pDraggable=\"cars\"\r\n                    (onDragStart)=\"dragStart($event,car)\" (onDragEnd)=\"dragEnd($event)\">\r\n                    <i class=\"fa fa-arrows fa-2x\" style=\"float:right;margin-top:8px\"></i>\r\n                    <img src=\"assets/showcase/images/demo/car/{{car.brand}}.png\" style=\"float:left\" draggable=\"false\">\r\n                    <div style=\"margin:8px 0 0 8px;float:left\">{{car.vin}} - {{car.year}}</div>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n        <div class=\"ui-g-12 ui-md-6 drop-column\" pDroppable=\"cars\" \r\n            (onDrop)=\"drop($event)\" [ngClass]=\"{'ui-highlight-car':draggedCar}\">\r\n            <p-table [value]=\"selectedCars\">\r\n                <ng-template pTemplate=\"header\">\r\n                    <tr>\r\n                        <th>Vin</th>\r\n                        <th>Year</th>\r\n                        <th>Brand</th>\r\n                        <th>Color</th>\r\n                    </tr>\r\n                </ng-template>\r\n                <ng-template pTemplate=\"body\" let-car>\r\n                    <tr>\r\n                        <td>{{car.vin}}</td>\r\n                        <td>{{car.year}}</td>\r\n                        <td>{{car.brand}}</td>\r\n                        <td>{{car.color}}</td>\r\n                    </tr>\r\n                </ng-template>\r\n            </p-table>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"content-section documentation\">\r\n    <p-tabView effect=\"fade\">\r\n        <p-tabPanel header=\"Documentation\">\r\n            <h3>Import</h3>\r\n<pre>\r\n<code class=\"language-typescript\" pCode ngNonBindable>\r\nimport &#123;DragDropModule&#125; from 'primeng/dragdrop';\r\n</code>\r\n</pre>\r\n\r\n            <h3>Getting Started</h3>\r\n            <p>pDraggable and pDroppable are attached to a target element to add drag-drop behavior. The value of a Directive attribute is required\r\n            and it defines the scope to match draggables with droppables. Droppable scope can also be an array to accept multiple droppables.</p>\r\n\r\n<pre>\r\n<code class=\"language-markup\" pCode ngNonBindable>\r\n&lt;div pDraggable=\"dd\"&gt;Draggable Div&lt;/div&gt;\r\n\r\n&lt;div pDroppable=\"dd\"&gt;Droppable Div&lt;/div&gt;\r\n</code>\r\n</pre>\r\n\r\n            <h3>Drag Handle</h3>\r\n            <p>Drag handle is used to restrict dragging unless mousedown occurs on the specified element. Panel below can only be dragged using its header.</p>\r\n\r\n            <pre>\r\n<code class=\"language-markup\" pCode ngNonBindable>\r\n&lt;div pDraggable=\"pnl\"  dragHandle=\".ui-panel-titlebar\"&gt;\r\n    &lt;p-panel header=\"Drag Header\"&gt;\r\n        The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.\r\n        His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.\r\n        Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,\r\n        kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.\r\n    &lt;/p-panel&gt;\r\n&lt;/div&gt;\r\n</code>\r\n</pre>\r\n\r\n            <h3>Draggable</h3>\r\n            <h4>Attributes</h4>\r\n            <div class=\"doc-tablewrapper\">\r\n                <table class=\"doc-table\">\r\n                    <thead>\r\n                        <tr>\r\n                            <th>Name</th>\r\n                            <th>Type</th>\r\n                            <th>Default</th>\r\n                            <th>Description</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr>\r\n                            <td>dragEffect</td>\r\n                            <td>string</td>\r\n                            <td>null</td>\r\n                            <td>Defines the cursor style, valid values are none, copy, move, link, copyMove, copyLink, linkMove and all.</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>dragHandle</td>\r\n                            <td>string</td>\r\n                            <td>null</td>\r\n                            <td>Selector to define the drag handle, by default anywhere on the target element is a drag handle to start dragging.</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>pDraggableDisabled</td>\r\n                            <td>boolean</td>\r\n                            <td>false</td>\r\n                            <td>Whether the element is draggable, useful for conditional cases.</td>\r\n                        </tr>\r\n                    </tbody>\r\n                </table>\r\n            </div>\r\n\r\n            <h4>Events</h4>\r\n            <div class=\"doc-tablewrapper\">\r\n                <table class=\"doc-table\">\r\n                    <thead>\r\n                        <tr>\r\n                            <th>Name</th>\r\n                            <th>Parameters</th>\r\n                            <th>Description</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr>\r\n                            <td>onDragStart</td>\r\n                            <td>\r\n                                event: browser event\r\n                            </td>\r\n                            <td>Callback to invoke when drag begins.</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>onDrag</td>\r\n                            <td>\r\n                                event: browser event\r\n                            </td>\r\n                            <td>Callback to invoke on dragging.</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>onDragEnd</td>\r\n                            <td>\r\n                                event: browser event\r\n                            </td>\r\n                            <td>Callback to invoke when drag ends.</td>\r\n                        </tr>\r\n                    </tbody>\r\n                </table>\r\n            </div>\r\n\r\n            <h3>Droppable</h3>\r\n            <h4>Attributes</h4>\r\n            <div class=\"doc-tablewrapper\">\r\n                <table class=\"doc-table\">\r\n                    <thead>\r\n                        <tr>\r\n                            <th>Name</th>\r\n                            <th>Type</th>\r\n                            <th>Default</th>\r\n                            <th>Description</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr>\r\n                            <td>dropEffect</td>\r\n                            <td>string</td>\r\n                            <td>null</td>\r\n                            <td>Defines the cursor style on drag over, valid values are copy, relocate, link and move.</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>pDroppableDisabled</td>\r\n                            <td>boolean</td>\r\n                            <td>false</td>\r\n                            <td>Whether the element is droppable, useful for conditional cases.</td>\r\n                        </tr>\r\n                    </tbody>\r\n                </table>\r\n            </div>\r\n\r\n            <h4>Events</h4>\r\n            <div class=\"doc-tablewrapper\">\r\n                <table class=\"doc-table\">\r\n                    <thead>\r\n                        <tr>\r\n                            <th>Name</th>\r\n                            <th>Parameters</th>\r\n                            <th>Description</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr>\r\n                            <td>onDragEnter</td>\r\n                            <td>\r\n                                event: browser event\r\n                            </td>\r\n                            <td>Callback to invoke when a draggable enters drop area.</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>onDrop</td>\r\n                            <td>\r\n                                event: browser event\r\n                            </td>\r\n                            <td>Callback to invoke when a draggable is dropped onto drop area.</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>onDragLeave</td>\r\n                            <td>\r\n                                event: browser event\r\n                            </td>\r\n                            <td>Callback to invoke when a draggable leave drop area.</td>\r\n                        </tr>\r\n                    </tbody>\r\n                </table>\r\n            </div>\r\n\r\n\r\n            <h3>Dependencies</h3>\r\n            <p>Native HTML5 DragDrop.</p>\r\n        </p-tabPanel>\r\n        <p-tabPanel header=\"Source\">\r\n            <a href=\"https://github.com/primefaces/primeng/tree/master/src/app/showcase/components/dragdrop\" class=\"btn-viewsource\" target=\"_blank\">\r\n                <i class=\"fa fa-github\"></i>\r\n                <span>View on GitHub</span>\r\n            </a>\r\n<pre>\r\n<code class=\"language-markup\" pCode ngNonBindable>\r\n&lt;h3 class=\"first\"&gt;Drag Only&lt;/h3&gt;\r\n&lt;div pDraggable=\"pnl\"  dragHandle=\".ui-panel-titlebar\"&gt;\r\n    &lt;p-panel header=\"Drag Header\"&gt;\r\n        The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.\r\n        His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.\r\n        Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,\r\n        kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.\r\n    &lt;/p-panel&gt;\r\n&lt;/div&gt;\r\n\r\n&lt;h3&gt;Drag and Drop to Table&lt;/h3&gt;\r\n&lt;div class=\"ui-g\"&gt;\r\n    &lt;div class=\"ui-g-12 ui-md-6 ui-g-nopad drag-column\"&gt;\r\n        &lt;ul style=\"margin:0;padding:0\"&gt;\r\n            &lt;li *ngFor=\"let car of availableCars\" class=\"ui-helper-clearfix\" pDraggable=\"cars\"\r\n                (onDragStart)=\"dragStart($event,car)\" (onDragEnd)=\"dragEnd($event)\"&gt;\r\n                &lt;i class=\"fa fa-arrows fa-2x\" style=\"float:right;margin-top:8px\"&gt;&lt;/i&gt;\r\n                &lt;img src=\"assets/showcase/images/demo/car/&#123;&#123;car.brand&#125;&#125;.png\" style=\"float:left\" draggable=\"false\"&gt;\r\n                &lt;div style=\"margin:8px 0 0 8px;float:left\"&gt;&#123;&#123;car.vin&#125;&#125; - &#123;&#123;car.year&#125;&#125;&lt;/div&gt;\r\n            &lt;/li&gt;\r\n        &lt;/ul&gt;\r\n    &lt;/div&gt;\r\n    &lt;div class=\"ui-g-12 ui-md-6 drop-column\" pDroppable=\"cars\" \r\n        (onDrop)=\"drop($event)\" [ngClass]=\"&#123;'ui-highlight-car':draggedCar&#125;\"&gt;\r\n        &lt;p-table [value]=\"selectedCars\"&gt;\r\n            &lt;ng-template pTemplate=\"header\"&gt;\r\n                &lt;tr&gt;\r\n                    &lt;th&gt;Vin&lt;/th&gt;\r\n                    &lt;th&gt;Year&lt;/th&gt;\r\n                    &lt;th&gt;Brand&lt;/th&gt;\r\n                    &lt;th&gt;Color&lt;/th&gt;\r\n                &lt;/tr&gt;\r\n            &lt;/ng-template&gt;\r\n            &lt;ng-template pTemplate=\"body\" let-car&gt;\r\n                &lt;tr&gt;\r\n                    &lt;td&gt;&#123;&#123;car.vin&#125;&#125;&lt;/td&gt;\r\n                    &lt;td&gt;&#123;&#123;car.year&#125;&#125;&lt;/td&gt;\r\n                    &lt;td&gt;&#123;&#123;car.brand&#125;&#125;&lt;/td&gt;\r\n                    &lt;td&gt;&#123;&#123;car.color&#125;&#125;&lt;/td&gt;\r\n                &lt;/tr&gt;\r\n            &lt;/ng-template&gt;\r\n        &lt;/p-table&gt;\r\n    &lt;/div&gt;\r\n&lt;/div&gt;\r\n</code>\r\n</pre>\r\n\r\n<pre>\r\n<code class=\"language-typescript\" pCode ngNonBindable>\r\nexport class DragDropDemo &#123;\r\n\r\n    availableCars: Car[];\r\n\r\n    selectedCars: Car[];\r\n\r\n    draggedCar: Car;\r\n\r\n    constructor(private carService: CarService) &#123; &#125;\r\n\r\n    ngOnInit() &#123;\r\n        this.selectedCars = [];\r\n        this.carService.getCarsSmall().then(cars => this.availableCars = cars);\r\n    &#125;\r\n\r\n    dragStart(event,car: Car) &#123;\r\n        this.draggedCar = car;\r\n    &#125;\r\n\r\n    drop(event) &#123;\r\n        if(this.draggedCar) &#123;\r\n            let draggedCarIndex = this.findIndex(this.draggedCar);\r\n            this.selectedCars = [...this.selectedCars, this.draggedCar];\r\n            this.availableCars = this.availableCars.filter((val,i) => i!=draggedCarIndex);\r\n            this.draggedCar = null;\r\n        &#125;\r\n    &#125;\r\n\r\n    dragEnd(event) &#123;\r\n        this.draggedCar = null;\r\n    &#125;\r\n\r\n    findIndex(car: Car) &#123;\r\n        let index = -1;\r\n        for(let i = 0; i < this.availableCars.length; i++) &#123;\r\n            if(car.vin === this.availableCars[i].vin) &#123;\r\n                index = i;\r\n                break;\r\n            &#125;\r\n        &#125;\r\n        return index;\r\n    &#125;\r\n\r\n&#125;\r\n</code>\r\n</pre>\r\n        </p-tabPanel>\r\n    </p-tabView>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/components/dragdrop/dragdrop.ts":
+/*!*************************************************!*\
+  !*** ./src/app/components/dragdrop/dragdrop.ts ***!
+  \*************************************************/
+/*! exports provided: Draggable, Droppable, DragDropModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Draggable", function() { return Draggable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Droppable", function() { return Droppable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DragDropModule", function() { return DragDropModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _dom_domhandler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dom/domhandler */ "./src/app/components/dom/domhandler.ts");
+
+
+
+
+let Draggable = class Draggable {
+    constructor(el, zone) {
+        this.el = el;
+        this.zone = zone;
+        this.onDragStart = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.onDragEnd = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.onDrag = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+    }
+    get pDraggableDisabled() {
+        return this._pDraggableDisabled;
+    }
+    set pDraggableDisabled(_pDraggableDisabled) {
+        this._pDraggableDisabled = _pDraggableDisabled;
+        if (this._pDraggableDisabled) {
+            this.unbindMouseListeners();
+        }
+        else {
+            this.el.nativeElement.draggable = true;
+            this.bindMouseListeners();
+        }
+    }
+    ngAfterViewInit() {
+        if (!this.pDraggableDisabled) {
+            this.el.nativeElement.draggable = true;
+            this.bindMouseListeners();
+        }
+    }
+    bindDragListener() {
+        if (!this.dragListener) {
+            this.zone.runOutsideAngular(() => {
+                this.dragListener = this.drag.bind(this);
+                this.el.nativeElement.addEventListener('drag', this.dragListener);
+            });
+        }
+    }
+    unbindDragListener() {
+        if (this.dragListener) {
+            this.zone.runOutsideAngular(() => {
+                this.el.nativeElement.removeEventListener('drag', this.dragListener);
+                this.dragListener = null;
+            });
+        }
+    }
+    bindMouseListeners() {
+        if (!this.mouseDownListener && !this.mouseUpListener) {
+            this.zone.runOutsideAngular(() => {
+                this.mouseDownListener = this.mousedown.bind(this);
+                this.mouseUpListener = this.mouseup.bind(this);
+                this.el.nativeElement.addEventListener('mousedown', this.mouseDownListener);
+                this.el.nativeElement.addEventListener('mouseup', this.mouseUpListener);
+            });
+        }
+    }
+    unbindMouseListeners() {
+        if (this.mouseDownListener && this.mouseUpListener) {
+            this.zone.runOutsideAngular(() => {
+                this.el.nativeElement.removeEventListener('mousedown', this.mouseDownListener);
+                this.el.nativeElement.removeEventListener('mouseup', this.mouseUpListener);
+                this.mouseDownListener = null;
+                this.mouseUpListener = null;
+            });
+        }
+    }
+    drag(event) {
+        this.onDrag.emit(event);
+    }
+    dragStart(event) {
+        if (this.allowDrag() && !this.pDraggableDisabled) {
+            if (this.dragEffect) {
+                event.dataTransfer.effectAllowed = this.dragEffect;
+            }
+            event.dataTransfer.setData('text', this.scope);
+            this.onDragStart.emit(event);
+            this.bindDragListener();
+        }
+        else {
+            event.preventDefault();
+        }
+    }
+    dragEnd(event) {
+        this.onDragEnd.emit(event);
+        this.unbindDragListener();
+    }
+    mousedown(event) {
+        this.handle = event.target;
+    }
+    mouseup(event) {
+        this.handle = null;
+    }
+    allowDrag() {
+        if (this.dragHandle && this.handle)
+            return _dom_domhandler__WEBPACK_IMPORTED_MODULE_3__["DomHandler"].matches(this.handle, this.dragHandle);
+        else
+            return true;
+    }
+    ngOnDestroy() {
+        this.unbindDragListener();
+        this.unbindMouseListeners();
+    }
+};
+Draggable.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('pDraggable'),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], Draggable.prototype, "scope", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], Draggable.prototype, "dragEffect", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], Draggable.prototype, "dragHandle", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+], Draggable.prototype, "onDragStart", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+], Draggable.prototype, "onDragEnd", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+], Draggable.prototype, "onDrag", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Boolean),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Boolean])
+], Draggable.prototype, "pDraggableDisabled", null);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('dragstart', ['$event']),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Function),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object]),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:returntype", void 0)
+], Draggable.prototype, "dragStart", null);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('dragend', ['$event']),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Function),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object]),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:returntype", void 0)
+], Draggable.prototype, "dragEnd", null);
+Draggable = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"])({
+        selector: '[pDraggable]'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]])
+], Draggable);
+
+let Droppable = class Droppable {
+    constructor(el, zone) {
+        this.el = el;
+        this.zone = zone;
+        this.onDragEnter = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.onDragLeave = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.onDrop = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+    }
+    ngAfterViewInit() {
+        if (!this.pDroppableDisabled) {
+            this.bindDragOverListener();
+        }
+    }
+    bindDragOverListener() {
+        if (!this.dragOverListener) {
+            this.zone.runOutsideAngular(() => {
+                this.dragOverListener = this.dragOver.bind(this);
+                this.el.nativeElement.addEventListener('dragover', this.dragOverListener);
+            });
+        }
+    }
+    unbindDragOverListener() {
+        if (this.dragOverListener) {
+            this.zone.runOutsideAngular(() => {
+                this.el.nativeElement.removeEventListener('dragover', this.dragOverListener);
+                this.dragOverListener = null;
+            });
+        }
+    }
+    dragOver(event) {
+        event.preventDefault();
+    }
+    drop(event) {
+        if (this.allowDrop(event)) {
+            event.preventDefault();
+            this.onDrop.emit(event);
+        }
+    }
+    dragEnter(event) {
+        event.preventDefault();
+        if (this.dropEffect) {
+            event.dataTransfer.dropEffect = this.dropEffect;
+        }
+        this.onDragEnter.emit(event);
+    }
+    dragLeave(event) {
+        event.preventDefault();
+        this.onDragLeave.emit(event);
+    }
+    allowDrop(event) {
+        let dragScope = event.dataTransfer.getData('text');
+        if (typeof (this.scope) == "string" && dragScope == this.scope) {
+            return true;
+        }
+        else if (this.scope instanceof Array) {
+            for (let j = 0; j < this.scope.length; j++) {
+                if (dragScope == this.scope[j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    ngOnDestroy() {
+        this.unbindDragOverListener();
+    }
+};
+Droppable.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('pDroppable'),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], Droppable.prototype, "scope", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Boolean)
+], Droppable.prototype, "pDroppableDisabled", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], Droppable.prototype, "dropEffect", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+], Droppable.prototype, "onDragEnter", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+], Droppable.prototype, "onDragLeave", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+], Droppable.prototype, "onDrop", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('drop', ['$event']),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Function),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object]),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:returntype", void 0)
+], Droppable.prototype, "drop", null);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('dragenter', ['$event']),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Function),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object]),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:returntype", void 0)
+], Droppable.prototype, "dragEnter", null);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('dragleave', ['$event']),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Function),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object]),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:returntype", void 0)
+], Droppable.prototype, "dragLeave", null);
+Droppable = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"])({
+        selector: '[pDroppable]'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]])
+], Droppable);
+
+let DragDropModule = class DragDropModule {
+};
+DragDropModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]],
+        exports: [Draggable, Droppable],
+        declarations: [Draggable, Droppable]
+    })
+], DragDropModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/panel/panel.ts":
+/*!*******************************************!*\
+  !*** ./src/app/components/panel/panel.ts ***!
+  \*******************************************/
+/*! exports provided: Panel, PanelModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Panel", function() { return Panel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PanelModule", function() { return PanelModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _common_shared__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/shared */ "./src/app/components/common/shared.ts");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm2015/animations.js");
+
+
+
+
+
+let idx = 0;
+let Panel = class Panel {
+    constructor(el) {
+        this.el = el;
+        this.collapsed = false;
+        this.expandIcon = 'pi pi-plus';
+        this.collapseIcon = 'pi pi-minus';
+        this.showHeader = true;
+        this.toggler = "icon";
+        this.collapsedChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.onBeforeToggle = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.onAfterToggle = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.transitionOptions = '400ms cubic-bezier(0.86, 0, 0.07, 1)';
+        this.id = `ui-panel-${idx++}`;
+    }
+    onHeaderClick(event) {
+        if (this.toggler === 'header') {
+            this.toggle(event);
+        }
+    }
+    onIconClick(event) {
+        if (this.toggler === 'icon') {
+            this.toggle(event);
+        }
+    }
+    toggle(event) {
+        if (this.animating) {
+            return false;
+        }
+        this.animating = true;
+        this.onBeforeToggle.emit({ originalEvent: event, collapsed: this.collapsed });
+        if (this.toggleable) {
+            if (this.collapsed)
+                this.expand(event);
+            else
+                this.collapse(event);
+        }
+        event.preventDefault();
+    }
+    expand(event) {
+        this.collapsed = false;
+        this.collapsedChange.emit(this.collapsed);
+    }
+    collapse(event) {
+        this.collapsed = true;
+        this.collapsedChange.emit(this.collapsed);
+    }
+    getBlockableElement() {
+        return this.el.nativeElement.children[0];
+    }
+    onToggleDone(event) {
+        this.animating = false;
+        this.onAfterToggle.emit({ originalEvent: event, collapsed: this.collapsed });
+    }
+};
+Panel.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Boolean)
+], Panel.prototype, "toggleable", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], Panel.prototype, "header", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Boolean)
+], Panel.prototype, "collapsed", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], Panel.prototype, "style", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], Panel.prototype, "styleClass", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], Panel.prototype, "expandIcon", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], Panel.prototype, "collapseIcon", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Boolean)
+], Panel.prototype, "showHeader", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], Panel.prototype, "toggler", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+], Panel.prototype, "collapsedChange", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+], Panel.prototype, "onBeforeToggle", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+], Panel.prototype, "onAfterToggle", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], Panel.prototype, "transitionOptions", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ContentChild"])(_common_shared__WEBPACK_IMPORTED_MODULE_3__["Footer"], { static: false }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], Panel.prototype, "footerFacet", void 0);
+Panel = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'p-panel',
+        template: `
+        <div [attr.id]="id" [ngClass]="'ui-panel ui-widget ui-widget-content ui-corner-all'" [ngStyle]="style" [class]="styleClass">
+            <div [ngClass]="{'ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all': true, 'ui-panel-titlebar-clickable': (toggleable && toggler === 'header')}" 
+                *ngIf="showHeader" (click)="onHeaderClick($event)">
+                <span class="ui-panel-title" *ngIf="header">{{header}}</span>
+                <ng-content select="p-header"></ng-content>
+                <a *ngIf="toggleable" [attr.id]="id + '-label'" class="ui-panel-titlebar-icon ui-panel-titlebar-toggler ui-corner-all ui-state-default" tabindex="0"
+                    (click)="onIconClick($event)" (keydown.enter)="onIconClick($event)" [attr.aria-controls]="id + '-content'" role="tab" [attr.aria-expanded]="!collapsed">
+                    <span [class]="collapsed ? expandIcon : collapseIcon"></span>
+                </a>
+            </div>
+            <div [attr.id]="id + '-content'" class="ui-panel-content-wrapper" [@panelContent]="collapsed ? {value: 'hidden', params: {transitionParams: animating ? transitionOptions : '0ms', height: '0', opacity:'0'}} : {value: 'visible', params: {transitionParams: animating ? transitionOptions : '0ms', height: '*', opacity: '1'}}" (@panelContent.done)="onToggleDone($event)"
+                [ngClass]="{'ui-panel-content-wrapper-overflown': collapsed||animating}"
+                role="region" [attr.aria-hidden]="collapsed" [attr.aria-labelledby]="id + '-label'">
+                <div class="ui-panel-content ui-widget-content">
+                    <ng-content></ng-content>
+                </div>
+                
+                <div class="ui-panel-footer ui-widget-content" *ngIf="footerFacet">
+                    <ng-content select="p-footer"></ng-content>
+                </div>
+            </div>
+        </div>
+    `,
+        animations: [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["trigger"])('panelContent', [
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('hidden', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+                    height: '0',
+                    opacity: 0
+                })),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('void', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+                    height: '{{height}}',
+                    opacity: '{{opacity}}'
+                }), { params: { height: '0', opacity: '0' } }),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('visible', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+                    height: '*',
+                    opacity: 1
+                })),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('visible <=> hidden', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])('{{transitionParams}}')),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('void => hidden', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])('{{transitionParams}}')),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('void => visible', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])('{{transitionParams}}'))
+            ])
+        ]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]])
+], Panel);
+
+let PanelModule = class PanelModule {
+};
+PanelModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]],
+        exports: [Panel, _common_shared__WEBPACK_IMPORTED_MODULE_3__["SharedModule"]],
+        declarations: [Panel]
+    })
+], PanelModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/showcase/components/dragdrop/dragdropdemo-routing.module.ts":
+/*!*****************************************************************************!*\
+  !*** ./src/app/showcase/components/dragdrop/dragdropdemo-routing.module.ts ***!
+  \*****************************************************************************/
+/*! exports provided: DragDropDemoRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DragDropDemoRoutingModule", function() { return DragDropDemoRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _dragdropdemo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dragdropdemo */ "./src/app/showcase/components/dragdrop/dragdropdemo.ts");
+
+
+
+
+let DragDropDemoRoutingModule = class DragDropDemoRoutingModule {
+};
+DragDropDemoRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild([
+                { path: '', component: _dragdropdemo__WEBPACK_IMPORTED_MODULE_3__["DragDropDemo"] }
+            ])
+        ],
+        exports: [
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]
+        ]
+    })
+], DragDropDemoRoutingModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/showcase/components/dragdrop/dragdropdemo.module.ts":
+/*!*********************************************************************!*\
+  !*** ./src/app/showcase/components/dragdrop/dragdropdemo.module.ts ***!
+  \*********************************************************************/
+/*! exports provided: DragDropDemoModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DragDropDemoModule", function() { return DragDropDemoModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _dragdropdemo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dragdropdemo */ "./src/app/showcase/components/dragdrop/dragdropdemo.ts");
+/* harmony import */ var _dragdropdemo_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dragdropdemo-routing.module */ "./src/app/showcase/components/dragdrop/dragdropdemo-routing.module.ts");
+/* harmony import */ var _components_dragdrop_dragdrop__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../components/dragdrop/dragdrop */ "./src/app/components/dragdrop/dragdrop.ts");
+/* harmony import */ var _components_panel_panel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../components/panel/panel */ "./src/app/components/panel/panel.ts");
+/* harmony import */ var _components_table_table__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../components/table/table */ "./src/app/components/table/table.ts");
+/* harmony import */ var _components_tabview_tabview__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../components/tabview/tabview */ "./src/app/components/tabview/tabview.ts");
+/* harmony import */ var _components_codehighlighter_codehighlighter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../components/codehighlighter/codehighlighter */ "./src/app/components/codehighlighter/codehighlighter.ts");
+
+
+
+
+
+
+
+
+
+
+let DragDropDemoModule = class DragDropDemoModule {
+};
+DragDropDemoModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _dragdropdemo_routing_module__WEBPACK_IMPORTED_MODULE_4__["DragDropDemoRoutingModule"],
+            _components_dragdrop_dragdrop__WEBPACK_IMPORTED_MODULE_5__["DragDropModule"],
+            _components_panel_panel__WEBPACK_IMPORTED_MODULE_6__["PanelModule"],
+            _components_table_table__WEBPACK_IMPORTED_MODULE_7__["TableModule"],
+            _components_tabview_tabview__WEBPACK_IMPORTED_MODULE_8__["TabViewModule"],
+            _components_codehighlighter_codehighlighter__WEBPACK_IMPORTED_MODULE_9__["CodeHighlighterModule"]
+        ],
+        declarations: [
+            _dragdropdemo__WEBPACK_IMPORTED_MODULE_3__["DragDropDemo"]
+        ]
+    })
+], DragDropDemoModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/showcase/components/dragdrop/dragdropdemo.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/showcase/components/dragdrop/dragdropdemo.ts ***!
+  \**************************************************************/
+/*! exports provided: DragDropDemo */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DragDropDemo", function() { return DragDropDemo; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _service_carservice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/carservice */ "./src/app/showcase/service/carservice.ts");
+
+
+
+let DragDropDemo = class DragDropDemo {
+    constructor(carService) {
+        this.carService = carService;
+    }
+    ngOnInit() {
+        this.selectedCars = [];
+        this.carService.getCarsSmall().then(cars => this.availableCars = cars);
+    }
+    dragStart(event, car) {
+        this.draggedCar = car;
+    }
+    drop(event) {
+        if (this.draggedCar) {
+            let draggedCarIndex = this.findIndex(this.draggedCar);
+            this.selectedCars = [...this.selectedCars, this.draggedCar];
+            this.availableCars = this.availableCars.filter((val, i) => i != draggedCarIndex);
+            this.draggedCar = null;
+        }
+    }
+    dragEnd(event) {
+        this.draggedCar = null;
+    }
+    findIndex(car) {
+        let index = -1;
+        for (let i = 0; i < this.availableCars.length; i++) {
+            if (car.vin === this.availableCars[i].vin) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+};
+DragDropDemo.ctorParameters = () => [
+    { type: _service_carservice__WEBPACK_IMPORTED_MODULE_2__["CarService"] }
+];
+DragDropDemo = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        template: __webpack_require__(/*! raw-loader!./dragdropdemo.html */ "./node_modules/raw-loader/index.js!./src/app/showcase/components/dragdrop/dragdropdemo.html"),
+        styles: ["\n        :host ::ng-deep .drag-column {\n            padding-right: .5em;\n        }\n\n        :host ::ng-deep .drop-column {\n            border: 1px solid #c8c8c8;\n            background-color: #ffffff;\n        }\n\n        .ui-g li {\n            list-style-type: none;\n            padding: 10px;\n            margin-bottom: 5px;\n            border: 1px solid #c8c8c8;\n            background-color: #ffffff;\n        }\n    "]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_service_carservice__WEBPACK_IMPORTED_MODULE_2__["CarService"]])
+], DragDropDemo);
+
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=components-dragdrop-dragdropdemo-module-es2015.js.map
